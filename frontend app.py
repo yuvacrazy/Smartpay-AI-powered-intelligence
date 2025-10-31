@@ -36,30 +36,29 @@ with col3:
 # Prediction Button
 # ------------------------------
 if st.button("🔍 Predict Salary"):
-    with st.spinner("Predicting..."):
-        time.sleep(1)
-        data = {
-            "age": age,
-            "education": education,
-            "job_title": job_title,
-            "hours_per_week": hours_per_week,
-            "gender": gender,
-            "marital_status": marital_status
-        }
+    BACKEND_URL = "https://ai-powered-salary-prediction-system.onrender.com/predict"
+
+    with st.spinner("Generating Prediction..."):
+        time.sleep(1.2)
         try:
-            response = requests.post(API_URL, json=data, headers=HEADERS)
+            data = {
+                "age": age,
+                "education": education,
+                "job_title": job_title,
+                "hours_per_week": hours_per_week,
+                "gender": gender,
+                "marital_status": marital_status
+            }
+            response = requests.post(BACKEND_URL, json=data)
             if response.status_code == 200:
-                salary = response.json()["predicted_salary_usd"]
+                result = response.json()
+                salary = float(result.get("predicted_salary_usd", 0))
                 st.success(f"💰 Predicted Salary: ${salary:,.2f}")
-                fig = go.Figure(go.Indicator(
-                    mode="gauge+number",
-                    value=salary,
-                    title={'text': "Annual Salary (USD)"},
-                    gauge={'axis': {'range': [0, 250000]}, 'bar': {'color': "#00c6ff"}}
-                ))
-                st.plotly_chart(fig, use_container_width=True)
             else:
-                st.error(f"API Error: {response.status_code} - {response.text}")
+                st.error(f"⚠️ API Error: {response.status_code} - {response.text}")
         except Exception as e:
-            st.error(f"Connection failed: {e}")
+            st.error(f"❌ Unable to connect to backend: {e}")
+
+
+
 
