@@ -8,7 +8,7 @@ import time
 # ----------------------------
 # CONFIG
 # ----------------------------
-BACKEND_URL = "https://ai-powered-salary-prediction-system.onrender.com"  # backend root URL
+BACKEND_URL = "https://smartpay-ai-powered-intelligence.onrender.com"  # backend root URL
 API_KEY = None  # Optional: set if backend has authentication
 
 HEADERS = {"Content-Type": "application/json"}
@@ -208,3 +208,4 @@ Developed by <b>Yuvaraja P</b> | Final Year CSE (IoT), Paavai Engineering Colleg
 <span style="color:#0072ff;">Powered by FastAPI · LightGBM · Streamlit</span>
 </footer>
 """, unsafe_allow_html=True)
+
