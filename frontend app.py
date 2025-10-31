@@ -6,7 +6,7 @@ import time
 # ------------------------------
 # Config
 # ------------------------------
-API_URL = "https://ai-powered-salary-prediction-system.onrender.com/predict"  # your backend URL
+API_URL = "https://smartpay-ai-powered-intelligence.onrender.com"  # your backend URL
 API_KEY = None  # Leave None if backend auth is disabled
 
 HEADERS = {"Content-Type": "application/json"}
@@ -62,3 +62,4 @@ if st.button("🔍 Predict Salary"):
                 st.error(f"API Error: {response.status_code} - {response.text}")
         except Exception as e:
             st.error(f"Connection failed: {e}")
+
