@@ -1,4 +1,13 @@
+fastapi
+uvicorn
+joblib
+numpy
+pandas
+lightgbm
+scikit-learn
 streamlit
 requests
 plotly
 fpdf
+
+
